@@ -11,6 +11,6 @@ Each coding lesson has been carried out in a separate branch that reflects the n
 
 Below, I've logged each branch along with its specific learning objective:
 
-Lesson 4
-Basic Three.js Setup with Vite
-Creation of the first scene and object.
+- Lesson 4
+  - Basic Three.js Setup with Vite
+  - Creation of the first scene and object.
