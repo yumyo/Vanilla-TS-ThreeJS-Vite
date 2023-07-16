@@ -5,6 +5,8 @@ import * as dat from 'lil-gui'
 // Import stylesheets
 import './style.css';
 
+THREE.ColorManagement.enabled = false
+
 // Write Javascript code!
 const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<canvas class="webgl"></canvas>`;
@@ -136,7 +138,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
 renderer.setSize(sizes.width, sizes.height);
-
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace
 
 // Controls 
 const controls = new OrbitControls(camera, canvas)
