@@ -4,6 +4,27 @@ import gsap from  'gsap'
 import * as dat from 'lil-gui'
 // Import stylesheets
 import './style.css';
+// Images
+
+const image = new Image();
+
+const loadingManager = new THREE.LoadingManager()
+const textureLoader = new THREE.TextureLoader(loadingManager)
+const colorTexture = textureLoader.load(
+  '/textures/door/color.jpg'
+)
+const alphaTexture = textureLoader.load('/textures/door/alpha.jpg')
+const heightTexture = textureLoader.load('/textures/door/height.jpg')
+const normalTexture = textureLoader.load('/textures/door/normal.jpg')
+const ambientOcclusionTexture = textureLoader.load('/textures/door/ambientOcclusion.jpg')
+const metalnessTexture = textureLoader.load('/textures/door/metalness.jpg')
+const roughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
+
+
+colorTexture.repeat.x = 3
+colorTexture.repeat.y = 3
+colorTexture.wrapS = THREE.RepeatWraping
+colorTexture.wrapT = THREE.RepeatWraping
 
 THREE.ColorManagement.enabled = false
 
@@ -23,7 +44,8 @@ const params = {
 }
 // Object
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: params.color });
+const material = new THREE.MeshBasicMaterial({ map: colorTexture });
+
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
@@ -49,37 +71,6 @@ window.addEventListener('mousemove', (event) => {
   cursor.x = event.clientX / sizes.width - 0.5
   cursor.y = - (event.clientY / sizes.height - 0.5)
 })
-
-// Objects
-// const group = new THREE.Group()
-// scene.add(group)
-
-// const cube1 = new THREE.Mesh(
-//   new THREE.BoxGeometry(1,1,1),
-//   new THREE.MeshBasicMaterial({color: 0xff00ff})
-// )
-
-// const cube2 = new THREE.Mesh(
-//   new THREE.BoxGeometry(1,1,1),
-//   new THREE.MeshBasicMaterial({color: 0x000fff})
-// )
-
-// cube2.position.x = -2
-
-// group.add(cube1)
-// group.add(cube2)
-// mesh.position.x = 0.7
-// mesh.position.y = -0.6
-// mesh.position.z = 1
-
-// mesh.position.set(0.7, -0.6, 1)
-
-// Scale
-// mesh.scale.set(2, 0.5, 0.5)
-
-// Rtation
-// mesh.rotation.y = Math.PI / 2
-
 
 // Axis helper
 const axisHelper = new THREE.AxesHelper()
